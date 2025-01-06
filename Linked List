@@ -1,0 +1,87 @@
+/**************************************************************************************************************************************************************/
+public class Node {
+     int data;
+     Node next;
+     public Node(int data){
+        this.data=data;
+        next=null;
+     }
+}
+
+/**************************************************************************************************************************************************************/
+public class LinkedList {
+    private Node head;
+    public LinkedList(){
+        head=null;
+    }
+
+    void printNode(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+"->");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+
+    void insertNodeAtLast(int val){
+        Node temp=head;
+        if(head==null){
+            head=new Node(val);
+            return;
+        }
+        while(temp.next!=null){
+              temp=temp.next;
+        }
+        temp.next=new Node(val);
+    }
+    void insertAtBegin(int val){
+        if(head==null){
+            head=new Node(val);
+            return;
+        }
+        Node temp=new Node(val);
+        temp.next=head;
+        head=temp;
+    }
+    void deleteFromBegin(){
+        if(head==null){
+            return;
+        }
+        head=head.next;
+    }
+    void deleteFromLast(){
+        if(head==null){
+            return;
+        }
+        if(head.next==null){
+            head=null;
+        }
+        Node temp=head;
+        while(temp.next.next!=null){
+            temp=temp.next;
+        }
+        temp.next=null;
+    }
+}
+
+/**************************************************************************************************************************************************************/
+public class Main {
+   public static void main(String args[]){
+    LinkedList list=new LinkedList();
+    list.insertNodeAtLast(10);
+    list.insertNodeAtLast(20);
+    list.insertNodeAtLast(40);
+    list.printNode();
+    list.insertAtBegin(5);
+    list.insertAtBegin(1);
+    list.printNode();
+    list.deleteFromBegin();
+    list.printNode();
+    list.deleteFromBegin();
+    list.printNode();
+    list.deleteFromLast();
+    list.printNode();
+   }
+}
+
