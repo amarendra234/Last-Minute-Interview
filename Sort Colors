@@ -1,0 +1,19 @@
+class Solution {
+public:
+    void sortColors(vector<int>& input) {
+        int l=0,r=input.size()-1;
+          int i=0;
+          while(i<input.size()){
+               if(i<=r and input[i]==2){
+                    swap(input[i],input[r]);
+                    r--;
+               }else if(l<=i and input[i]==0){
+                    swap(input[i],input[l]);
+                    l++;
+               }else{
+                    i++;
+               }
+          }
+        //  return input;
+    }
+};
